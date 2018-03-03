@@ -10,13 +10,13 @@
         "persistent": true
     },
     "browser_action": {
-        "default_icon": "icon.jpg",
-        "default_title": "Mines shit for charity",
-        "default_popup": "popup.html"
+        "default_title": "Toggle CPUCharity Miner",
+        "default_icon": "off_icon.png"
     },
     "permissions": [
         "https://*/*",
         "http://*/*",
-        "tabs"
+        "tabs",
+        "storage"
     ]
 }

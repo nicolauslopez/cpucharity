@@ -1,8 +1,20 @@
-function banana() {
-    setInterval(function() {
-        var throttle_val = document.getElementById('throttle').value;
-    }, 1000);
-};
-banana();
+document.addEventListener('DOMContentLoaded', function(){
 
-// document.getElementById('throttle').addEventListener('change');
+    var input = document.getElementById('toggle-miner');
+
+    // set the initial state of the checkbox
+    chrome.storage.sync.get("toggle_miner", function(data){
+        if (data["toggle_miner"]){
+            input.checked = true;
+        } else {
+            input.checked = false;
+        }
+      });
+
+
+    input.addEventListener("change", function(){
+        chrome.storage.sync.set({"toggle_miner": input.checked});
+    });
+
+
+});
