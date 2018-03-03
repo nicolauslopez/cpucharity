@@ -63,6 +63,6 @@ function pad(val) {
 }
 
 function update_stats() {
-  $.ajax({url: "/addsecond/{{request.user.username}}", success: function(result){}});
+  $.ajax({url: "/addsecond/{{request.user.username}}/", success: function(result){}});
 }
 {% endblock %}
