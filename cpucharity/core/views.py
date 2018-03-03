@@ -56,9 +56,9 @@ def register_user(request):
         if form.is_valid():
             user = User.objects.create_user(
                     request.POST['username'],
-                    request.POST['email'],
                     request.POST['password'],
                     )
+            user.set_password(request.POST['password'])
             user.save()
             print("Saved notification for user: " + user.username)
             return redirect('login')
@@ -89,3 +89,11 @@ def addsecond(request, username):
 def logout_user(request):
     logout(request)
     return redirect('login')
+
+def stats(request, username):
+    pass
+
+def leaderboard(request):
+    context = {}
+    context['user_stats'] = user_stat.objects.all().order_by('-seconds_mined')
+    return render(request, 'core/leaderboard.html', context=context)

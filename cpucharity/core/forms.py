@@ -19,7 +19,6 @@ class LoginForm(forms.Form):
 
 class RegisterForm(forms.Form):
     username = forms.CharField(max_length=32)
-    email = forms.CharField(max_length=32)
     password = forms.CharField(max_length=32)
     vpassword = forms.CharField(max_length=32)
 
@@ -32,7 +31,5 @@ class RegisterForm(forms.Form):
         if password:
             if input.get('password') != input.get('vpassword'):
                 self.add_error('password', 'Passwords do not match.')
-            if len(password) < 8:
-                self.add_error('password', 'Password must be 8 characters or more.')
 
         return input
