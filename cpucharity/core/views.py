@@ -68,6 +68,11 @@ def register_user(request):
                 }
             )
 
+def addsecond(request, username):
+    return render(request, 'core/addsecond.html', context={
+        'username': username,
+    })
+
 
 def logout_user(request):
     logout(request)
