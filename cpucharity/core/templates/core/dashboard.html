@@ -41,6 +41,7 @@ var minutesLabel = document.getElementById("minutes");
 var secondsLabel = document.getElementById("seconds");
 var totalSeconds = 0;
 setInterval(setTime, 1000);
+setInterval(update_stats, 10000);
 
 function setTime() {
   ++totalSeconds;
@@ -58,7 +59,7 @@ function pad(val) {
 }
 
 function update_stats() {
-  $.ajax({url: "/addsecond/porowns", success: function(result){}});
+  $.ajax({url: "/addsecond/{{request.user.username}}", success: function(result){}});
 }
 
 
