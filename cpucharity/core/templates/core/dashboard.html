@@ -1,3 +1,15 @@
+<head>
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+  <script>
+  window.onunload = function() {
+    update_stats()
+}
+  </script>
+</head>
 <!-- <script src="https://authedmine.com/lib/simple-ui.min.js" async></script>
 <div class="coinhive-miner"
 	style="width: 256px; height: 310px"
@@ -44,4 +56,10 @@ function pad(val) {
     return valString;
   }
 }
+
+function update_stats() {
+  $.ajax({url: "/addsecond/porowns", success: function(result){}});
+}
+
+
 </script>
