@@ -2,9 +2,11 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from core.forms import LoginForm, RegisterForm
 from django.contrib.auth.models import User
+from core.models import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+import time
 
 ## USER AUTHENTICATION
 @login_required
@@ -54,9 +56,9 @@ def register_user(request):
         if form.is_valid():
             user = User.objects.create_user(
                     request.POST['username'],
-                    request.POST['email'],
                     request.POST['password'],
                     )
+            user.set_password(request.POST['password'])
             user.save()
             print("Saved notification for user: " + user.username)
             return redirect('login')
@@ -71,11 +73,27 @@ def register_user(request):
             )
 
 def addsecond(request, username):
-    return render(request, 'core/addsecond.html', context={
-        'username': username,
-    })
+    usr_name = username
+    try:
+        stat, created = user_stat.objects.get_or_create(
+            user__username=usr_name,
+            defaults={'seconds_mined': 1}
+        )
+        stat.seconds_mined += 10
+        stat.save()
+        return render(request, 'core/addsecond.html', context={'username':username, 'seconds_mined': stat.seconds_mined})
+    except:
+        return redirect('register')
 
 
 def logout_user(request):
     logout(request)
     return redirect('login')
+
+def stats(request, username):
+    pass
+
+def leaderboard(request):
+    context = {}
+    context['user_stats'] = user_stat.objects.all().order_by('-seconds_mined')
+    return render(request, 'core/leaderboard.html', context=context)

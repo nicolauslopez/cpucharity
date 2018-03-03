@@ -1,0 +1,25 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<div style="font-size: 20px;" class="content">
+    <div class="row">
+      <table class="table">
+        <thead style="color: red;"class="thead-dark">
+          <tr>
+            <th scope="col">Rank</th>
+            <th scope="col">Username</th>
+            <th scope="col">Seconds Mined</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for stat in user_stats %}
+          <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{stat.user.username}}</td>
+            <td>{{stat.seconds_mined}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+</div>
+{% endblock %}
