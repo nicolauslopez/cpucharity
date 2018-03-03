@@ -2,10 +2,15 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from core.forms import LoginForm, RegisterForm
 from django.contrib.auth.models import User
+<<<<<<< HEAD
 from core.models import *
+=======
+from core.models import user_stat
+>>>>>>> 1daa4c63f990cd3d2fae6094b7209599416a8864
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+import time
 
 ## USER AUTHENTICATION
 @login_required
@@ -72,13 +77,17 @@ def register_user(request):
             )
 
 def addsecond(request, username):
-    user = User.objects.get(username=username)
-    stats = user_stat.objects.get_or_create(user=user, defaults={'seconds_mined': 1})
-    stats = user_stat.objects.get(user=user)
-    stats.seconds_mined += 10
-    return render(request, 'core/addsecond.html', context={
-        'username': username,
-    })
+    usr_name = username
+    try:
+        stat, created = user_stat.objects.get_or_create(
+            user__username=usr_name,
+            defaults={'seconds_mined': 1}
+        )
+        stat.seconds_mined += 1
+        stat.save()
+        return render(request, 'core/addsecond.html', context={'username':username, 'seconds_mined': stat.seconds_mined})
+    except:
+        return redirect('register')
 
 
 def logout_user(request):
