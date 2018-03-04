@@ -1,16 +1,16 @@
-# Django Boilerplate
-A standard Django project, perfect for hackathons and web application prototypes.
+# CPU Charity
+Project for FSU Hack 2018.
+Team DCI: Nick, Kaleb, Nilay
 
 # Features
-* Authentication routes already built out
-* Landing page (inspired by [Creative Template](https://startbootstrap.com/template-overviews/creative/))
+* Create your own account
+* Mine cryptocurrency and track your stats
+* View a leaderboard of your stats
 
 # Installation
-1. Clone the repository (`git clone https://github.com/porowns/django-boilerplate.git`)
-2. Run the installation scripts, if needed. (`sudo ./bin/install.sh`, make need to `cd bin` first)
-3. Rename the `project` folder if needed, please make sure you update `project/project/settings.py`.
-4. Initial database migration. `python3 manage.py makemigrations` `python3 manage.py migrate`
-5. Run the web application! `python3 manage.py runserver`
+1. Run the installation scripts, if needed. (`sudo ./bin/install.sh`, make need to `cd bin` first)
+2. Rename the `project` folder if needed, please make sure you update `project/project/settings.py`.
+3. Initial database migration. `python3 manage.py makemigrations` `python3 manage.py migrate`
+4. Run the web application! `python3 manage.py runserver`
 
-# Project Tree
-[Click here](https://pastebin.com/imsfBd3a) to view a commented project tree.
+# Please note that the development version of the project won't actually benefit charity, it's on a test database.

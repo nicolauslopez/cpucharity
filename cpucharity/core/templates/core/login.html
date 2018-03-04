@@ -14,9 +14,19 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="{% static "core/js/accounts.js" %}"></script>
-    
+
     <!-- Particles -->
     <link href="{% static "core/css/particles.min.css" %}" rel="stylesheet">
+
+    <style>
+    .btn-primary {
+      background-color: #420C7F !important;
+      border-color: #420C7F !important;
+    }
+    a {
+      color: white !important;
+    }
+    </style>
 
 </head>
 
@@ -76,8 +86,8 @@
 
                     </form>
 
-                    <div class="register-help">
-                        <a href="{% url 'register' %}">Don't have an account?</p>
+                    <div style="font-size: 16px;" class="register-help">
+                        <a href="{% url 'register' %}"><strong>Don't have an account? Click here.<strong></p>
                     </div>
                 </div>
             </div>
